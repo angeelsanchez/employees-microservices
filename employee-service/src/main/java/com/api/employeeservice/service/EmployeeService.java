@@ -37,14 +37,14 @@ public class EmployeeService {
         return employeeRepository.save(employee);
     }
 
-    public Smartphone saveSmarthphone(int employeeId, Smartphone newSmartphone) {
-        newSmartphone.setEmployeeId(employeeId);
-        return smartphoneFeignClient.save(newSmartphone);
-    }
-
     public Laptop saveLaptop(int employeeId, Laptop newLaptop) {
         newLaptop.setEmployeeId(employeeId);
         return laptopFeignClient.save(newLaptop);
+    }
+
+    public Smartphone saveSmarthphone(int employeeId, Smartphone newSmartphone) {
+        newSmartphone.setEmployeeId(employeeId);
+        return smartphoneFeignClient.save(newSmartphone);
     }
 
     public List<Laptop> getLaptopsByEmployeeId(int employeeId) {

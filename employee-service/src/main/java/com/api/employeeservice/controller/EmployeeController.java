@@ -41,15 +41,6 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeService.save(newEmployee));
     }
 
-    @PostMapping("/savesmartphone/{employeeId}")
-    public ResponseEntity<Smartphone> saveSmartphone(@PathVariable("employeeId") int employeeId, @RequestBody Smartphone smartphone) {
-        if (employeeService.getEmployeeById(employeeId) == null)
-            return ResponseEntity.notFound().build();
-
-        Smartphone newSmartphone = employeeService.saveSmarthphone(employeeId, smartphone);
-        return ResponseEntity.ok(newSmartphone);
-    }
-
     @PostMapping("/savelaptop/{employeeId}")
     public ResponseEntity<Laptop> saveLaptop(@PathVariable("employeeId") int employeeId, @RequestBody Laptop laptop) {
         if (employeeService.getEmployeeById(employeeId) == null)
@@ -59,14 +50,13 @@ public class EmployeeController {
         return ResponseEntity.ok(newLaptop);
     }
 
+    @PostMapping("/savesmartphone/{employeeId}")
+    public ResponseEntity<Smartphone> saveSmartphone(@PathVariable("employeeId") int employeeId, @RequestBody Smartphone smartphone) {
+        if (employeeService.getEmployeeById(employeeId) == null)
+            return ResponseEntity.notFound().build();
 
-    @GetMapping("/smartphones/{employeeId}")
-    public ResponseEntity<List<Smartphone>> getSmartphonesByEmployeeId(@PathVariable("employeeId") int employeeId) {
-        List<Smartphone> smartphones = employeeService.getSmartphonesByEmployeeId(employeeId);
-        if (smartphones.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok(smartphones);
+        Smartphone newSmartphone = employeeService.saveSmarthphone(employeeId, smartphone);
+        return ResponseEntity.ok(newSmartphone);
     }
 
     @GetMapping("/laptops/{employeeId}")
@@ -78,6 +68,15 @@ public class EmployeeController {
         return ResponseEntity.ok(laptops);
     }
 
+
+    @GetMapping("/smartphones/{employeeId}")
+    public ResponseEntity<List<Smartphone>> getSmartphonesByEmployeeId(@PathVariable("employeeId") int employeeId) {
+        List<Smartphone> smartphones = employeeService.getSmartphonesByEmployeeId(employeeId);
+        if (smartphones.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(smartphones);
+    }
 
     @GetMapping("/getAll/{employeeId}")
     public ResponseEntity<Map<String, Object>> getAll(@PathVariable("employeeId") int employeeId) {
