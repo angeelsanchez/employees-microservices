@@ -7,6 +7,6 @@ spring:
         git:
           default-label: multiple-instances
           uri: https://github.com/angeelsanchez/employees-microservices
-          search-paths: config-data
+          search-paths: gateway
   application:
     name: config-service
