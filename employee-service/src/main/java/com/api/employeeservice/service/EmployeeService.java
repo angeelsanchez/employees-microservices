@@ -67,14 +67,14 @@ public class EmployeeService {
 
         List<Smartphone> smartphones = smartphoneFeignClient.getSmartphones(employeeId);
         if (smartphones == null) {
-            result.put("Smartphones", "No se pudo obtener la lista de smartphones");
+            result.put("Smartphones", "Este empleado no tiene smartphones");
         } else {
             result.put("Smartphones", smartphones);
         }
 
         List<Laptop> laptops = laptopFeignClient.getLaptops(employeeId);
         if (laptops == null) {
-            result.put("Laptops", "No se pudo obtener la lista de laptops");
+            result.put("Laptops", "Este empleado no tiene laptops");
         } else {
             result.put("Laptops", laptops);
         }

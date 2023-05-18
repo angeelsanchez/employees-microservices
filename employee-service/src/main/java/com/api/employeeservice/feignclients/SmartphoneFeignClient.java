@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(value = "smartphone-service", url = "http://localhost:8003")
+@FeignClient(value = "smartphone-service")
 //@RequestMapping("/smartphone")
 public interface SmartphoneFeignClient {
 
